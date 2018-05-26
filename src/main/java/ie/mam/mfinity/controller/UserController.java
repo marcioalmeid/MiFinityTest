@@ -17,7 +17,7 @@ public class UserController{
   private UserRepository userRepository;
   
   @GetMapping(path="add")
-  public @ResponseBody String addNewUser(@RequestParam String name, RequestParam String password){
+  public @ResponseBody String addNewUser(@RequestParam String name, @RequestParam String password){
     User user = new User();
     user.setName(name);
     user.setPassword(password);
