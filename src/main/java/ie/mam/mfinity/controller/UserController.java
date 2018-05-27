@@ -26,9 +26,9 @@ public class UserController{
     
   }
   
-  @GetMapping(path="/all")
+  /*@GetMapping(path="/all")
   public @ResponseBody Interable<User> getAllUsers(){
     return userRepository.findAll();
-  }
+  }*/
   
 }
