@@ -1,3 +1,5 @@
+package ie.mam.mfinity.repository;
+
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
