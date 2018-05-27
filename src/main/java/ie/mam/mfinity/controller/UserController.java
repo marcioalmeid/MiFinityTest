@@ -22,7 +22,12 @@ public class UserController{
     userRepository.save(user);
     
     return "Saved";
-    
+     
+  }
+  
+   @GetMapping(path="/")
+  public @ResponseBody String getIndex(){
+    return "Teste DB";
   }
   
   /*@GetMapping(path="/all")
