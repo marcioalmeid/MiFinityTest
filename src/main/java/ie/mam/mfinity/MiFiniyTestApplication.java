@@ -9,7 +9,7 @@ public class MiFiniyTestApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MiFiniyTestApplication.class, args);
 	}
-}
+
 
 @RestController
 @RequestMapping("/home")
@@ -24,4 +24,6 @@ public class IndexController {
         //mapped to hostname:port/home/index/
         return "Hello from index";
     }
+}
+  
 }
