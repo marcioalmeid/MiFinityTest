@@ -11,7 +11,7 @@ import ie.mam.mfinity.model.User;
 import ie.mam.mfinity.repository.UserRepository;
 
 @Controller
-@RequestMapping(path="/test")
+@RequestMapping(path="/home")
 public class UserController{
   @Autowired
   private UserRepository userRepository;
@@ -24,11 +24,7 @@ public class UserController{
     return "Saved";
      
   }
-  
-   @GetMapping(path="/")
-  public @ResponseBody String getIndex(){
-    return "Teste DB";
-  }
+      
   
   /*@GetMapping(path="/all")
   public @ResponseBody Interable<User> getAllUsers(){
@@ -36,3 +32,6 @@ public class UserController{
   }*/
   
 }
+
+
+
