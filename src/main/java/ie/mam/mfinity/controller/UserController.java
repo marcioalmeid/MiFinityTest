@@ -12,7 +12,7 @@ import ie.mam.mfinity.model.User;
 import ie.mam.mfinity.repository.UserRepository;
 
 @Controller
-@RequestMapping(path="/home")
+@RequestMapping(path="/user")
 public class UserController{
   @Autowired
   private UserRepository userRepository;
@@ -27,7 +27,7 @@ public class UserController{
   }
       
   
-@GetMapping(path="/all")
+@GetMapping(path="/list")
 @CrossOrigin(origins = "http://marcioalmeidamendes.ml:4200")
   public @ResponseBody Iterable<User> getAllUsers(){
     return userRepository.findAll();
