@@ -26,10 +26,11 @@ public class UserController{
   }
       
   
-  /*@GetMapping(path="/all")
-  public @ResponseBody Interable<User> getAllUsers(){
+@GetMapping(path="/all")
+@CrossOrigin(origins = "http://marcioalmeidamendes.ml:4200")
+  public @ResponseBody Iterable<User> getAllUsers(){
     return userRepository.findAll();
-  }*/
+ }
   
 }
 
