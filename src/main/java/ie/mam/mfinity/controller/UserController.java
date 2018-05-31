@@ -1,9 +1,5 @@
 package ie.mam.mfinity.controller;
 
-
-
-import java.util.Collection;
-import java.util.stream.Collectors; 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,13 +29,9 @@ public class UserController{
   
 @GetMapping(path="/all")
 @CrossOrigin(origins = "http://marcioalmeidamendes.ml:4200")
-public Collection<User> getAllUsers(){
-    return  ((Collection<User>) userRepository.findAll()).stream().collect(Collectors.toList());
+  public @ResponseBody Iterable<User> getAllUsers(){
+    return userRepository.findAll();
  }
-/*public @ResponseBody Iterable<User> getAllUsers(){
-return userRepository.findAll();
-}*/
-
   
 }
 
