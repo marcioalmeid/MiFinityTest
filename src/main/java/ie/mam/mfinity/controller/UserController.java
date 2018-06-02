@@ -3,11 +3,13 @@ package ie.mam.mfinity.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMethod;
 import ie.mam.mfinity.model.User;
 import ie.mam.mfinity.repository.UserRepository;
 
@@ -25,13 +27,9 @@ public class UserController{
    return "Saved";
   }
 
-    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
-    @ResponseBody
+    @RequestMapping(value = "add-user/{id}", method = RequestMethod.POST)
     @CrossOrigin(origins = "http://marcioalmeidamendes.ml:4200")
-    public User update(@PathVariable("id") String id, @RequestBody User user) {
-        logger.debug("I am in the controller and got ID: " + id.toString());
-        logger.debug("I am in the controller and got user name: " + user.toString());
+    public @ResponseBody User update(@PathVariable("id") String id, @RequestBody User user) {
         return new User("User name","password");
     }
 
