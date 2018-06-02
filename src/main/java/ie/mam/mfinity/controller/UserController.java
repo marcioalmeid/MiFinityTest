@@ -23,14 +23,25 @@ public class UserController{
     User user=new User( userName, password) ;
     userRepository.save(user);
    return "Saved";
-
   }
+
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
+    @ResponseBody
+    @CrossOrigin(origins = "http://marcioalmeidamendes.ml:4200")
+    public User update(@PathVariable("id") String id, @RequestBody User user) {
+        logger.debug("I am in the controller and got ID: " + id.toString());
+        logger.debug("I am in the controller and got user name: " + user.toString());
+        return new User("User name","password");
+    }
 
   @GetMapping(path="/list")
   @CrossOrigin(origins = "http://marcioalmeidamendes.ml:4200")
   public @ResponseBody Iterable<User> getAllUsers(){
     return userRepository.findAll();
  }
+
+
 
 }
 
