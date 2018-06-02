@@ -27,7 +27,7 @@ public class UserController{
    return "Saved";
   }
 
-    @RequestMapping(value = "add-user/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "update/{id}", method = RequestMethod.POST)
     @CrossOrigin(origins = "http://marcioalmeidamendes.ml:4200")
     public @ResponseBody User update(@PathVariable("id") String id, @RequestBody User user) {
         return new User("User name","password");
