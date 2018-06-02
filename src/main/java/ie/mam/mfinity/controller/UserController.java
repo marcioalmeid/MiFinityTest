@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import ie.mam.mfinity.model.User;
 import ie.mam.mfinity.repository.UserRepository;
@@ -37,6 +38,14 @@ public class UserController{
 //        return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 
+   @PostMapping(value="add")
+   @CrossOrigin(origins = "http://marcioalmeidamendes.ml:4200")
+    public User create(@RequestBody User user){
+        return userRepository.save(user);
+   }
+    
+    
+    
   @RequestMapping(value = "update/{id}", method = RequestMethod.POST)
   @CrossOrigin(origins = "http://marcioalmeidamendes.ml:4200")
   public @ResponseBody User update(@PathVariable("id") String id, @RequestBody User user) {
