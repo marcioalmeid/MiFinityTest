@@ -16,23 +16,22 @@ import ie.mam.mfinity.repository.UserRepository;
 public class UserController{
   @Autowired
   private UserRepository userRepository;
-  
+
   @GetMapping(path="add")
+  @CrossOrigin(origins = "http://marcioalmeidamendes.ml:4200")
   public @ResponseBody String addNewUser(@RequestParam String userName, @RequestParam String password){
     User user=new User( userName, password) ;
     userRepository.save(user);
-    
-    return "Saved";
-     
+   return "Saved";
+
   }
-      
-  
-@GetMapping(path="/list")
-@CrossOrigin(origins = "http://marcioalmeidamendes.ml:4200")
+
+  @GetMapping(path="/list")
+  @CrossOrigin(origins = "http://marcioalmeidamendes.ml:4200")
   public @ResponseBody Iterable<User> getAllUsers(){
     return userRepository.findAll();
  }
-  
+
 }
 
 
