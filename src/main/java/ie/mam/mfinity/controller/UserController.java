@@ -16,12 +16,12 @@ import ie.mam.mfinity.repository.UserRepository;
 
 @Controller
 @RequestMapping(path="/user")
+@CrossOrigin(origins = "http://marcioalmeidamendes.ml:4200")
 public class UserController{
   @Autowired
   private UserRepository userRepository;
 
   @GetMapping(path="add")
-  @CrossOrigin(origins = "http://marcioalmeidamendes.ml:4200")
   public @ResponseBody String addNewUser(@RequestParam String userName, @RequestParam String password){
   User user=new User( userName, password) ;
     userRepository.save(user);
@@ -30,7 +30,6 @@ public class UserController{
 
  
     @RequestMapping(value="addUser", method = RequestMethod.POST)
-    @CrossOrigin(origins = "http://marcioalmeidamendes.ml:4200")
     public  @ResponseBody String addUser(@RequestBody User user) {
 	    userRepository.save(user);
 	   return "User Saved";
@@ -38,27 +37,21 @@ public class UserController{
 //        return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 
-   @PostMapping(value="add")
-   @CrossOrigin(origins = "http://marcioalmeidamendes.ml:4200")
+   @PostMapping(value="add")   
     public User create(@RequestBody User user){
         return userRepository.save(user);
    }
     
-    
-    
+     
   @RequestMapping(value = "update/{id}", method = RequestMethod.POST)
-  @CrossOrigin(origins = "http://marcioalmeidamendes.ml:4200")
   public @ResponseBody User update(@PathVariable("id") String id, @RequestBody User user) {
         return new User("User name","password");
   }
 
   @GetMapping(path="/list")
-  @CrossOrigin(origins = "http://marcioalmeidamendes.ml:4200")
   public @ResponseBody Iterable<User> getAllUsers(){
     return userRepository.findAll();
  }
-
-
 
 }
 
