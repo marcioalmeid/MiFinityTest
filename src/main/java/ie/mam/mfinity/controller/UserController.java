@@ -30,7 +30,7 @@ public class UserController{
  
     @RequestMapping(value="addUser", method = RequestMethod.POST)
     @CrossOrigin(origins = "http://marcioalmeidamendes.ml:4200")
-    public  @ResponseBody String addUser(@RequestBody Epic user) {
+    public  @ResponseBody String addUser(@RequestBody User user) {
 	    userRepository.save(user);
 	   return "User Saved";
 
