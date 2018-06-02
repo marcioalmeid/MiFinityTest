@@ -22,16 +22,26 @@ public class UserController{
   @GetMapping(path="add")
   @CrossOrigin(origins = "http://marcioalmeidamendes.ml:4200")
   public @ResponseBody String addNewUser(@RequestParam String userName, @RequestParam String password){
-    User user=new User( userName, password) ;
+  User user=new User( userName, password) ;
     userRepository.save(user);
    return "Saved";
   }
 
-    @RequestMapping(value = "update/{id}", method = RequestMethod.POST)
+ 
+    @RequestMapping(value="addUser", method = RequestMethod.POST)
     @CrossOrigin(origins = "http://marcioalmeidamendes.ml:4200")
-    public @ResponseBody User update(@PathVariable("id") String id, @RequestBody User user) {
-        return new User("User name","password");
+    public  @ResponseBody String addUser(@RequestBody Epic user) {
+	    userRepository.save(user);
+	   return "User Saved";
+
+//        return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
+
+  @RequestMapping(value = "update/{id}", method = RequestMethod.POST)
+  @CrossOrigin(origins = "http://marcioalmeidamendes.ml:4200")
+  public @ResponseBody User update(@PathVariable("id") String id, @RequestBody User user) {
+        return new User("User name","password");
+  }
 
   @GetMapping(path="/list")
   @CrossOrigin(origins = "http://marcioalmeidamendes.ml:4200")
