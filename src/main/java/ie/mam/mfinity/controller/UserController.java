@@ -40,9 +40,9 @@ public class UserController{
        return new ResponseEntity<Void>(HttpStatus.OK);
    }
      
-  @RequestMapping(value = "update/{id}", method = RequestMethod.POST)
+  @RequestMapping(value = "update/{id}", method = RequestMethod.PUT)
   public @ResponseBody User update(@PathVariable("id") String id, @RequestBody User user) {
-  
+        userRepository.save(user);
         return new User("User name","password");
   }
 
