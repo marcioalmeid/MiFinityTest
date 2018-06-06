@@ -33,40 +33,16 @@ public class UserController{
 	    userRepository.save(user);
         return new ResponseEntity<Void>(HttpStatus.CREATED);
     }    
-   
-   @RequestMapping(value = "delete}", method = RequestMethod.POST)
-   public ResponseEntity<?> delete(@RequestBody User user ) {
 
-        userRepository.delete(user); 	         
-       return new ResponseEntity<Void>(HttpStatus.OK);
-   } 
-   
    @RequestMapping(value = "delete/{id}", method = RequestMethod.DELETE)
-   public ResponseEntity<Void> delete(@PathVariable("id") long id){
-        
-       //User user = userService.findById(id);
-
-       //if (user == null){
-       //    LOG.info("Unable to delete. User with id {} not found", id);
-        //   return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-       //}
-  
+   public ResponseEntity<Void> delete(@PathVariable("id") long id){          
        userRepository.deleteById(id);
        return new ResponseEntity<Void>(HttpStatus.OK);
    }
-   
-	/*@RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
-	public @ResponseBody String delete(@PathVariable("id") String ids) {
-			Long id = Long.parseLong(ids);
-           userRepository.deleteById(id); 	         
-	       return "Ok";
-	}*/
-
-   
      
   @RequestMapping(value = "update/{id}", method = RequestMethod.POST)
   public @ResponseBody User update(@PathVariable("id") String id, @RequestBody User user) {
-	  
+  
         return new User("User name","password");
   }
 
