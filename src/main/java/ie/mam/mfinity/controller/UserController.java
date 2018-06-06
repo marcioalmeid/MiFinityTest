@@ -42,9 +42,19 @@ public class UserController{
         return userRepository.save(user);
    }
     
+   
+   @RequestMapping(value = "delete/{id}", method = RequestMethod.POST)
+   public @ResponseBody String delete(@PathVariable("id") String ids ) {
+	   		Long id = Long.parseLong(ids);
+ 	        userRepository.deleteById(id);
+ 	        
+         return "User was deleted successfuly!";
+   } 
+   
      
   @RequestMapping(value = "update/{id}", method = RequestMethod.POST)
   public @ResponseBody User update(@PathVariable("id") String id, @RequestBody User user) {
+	  
         return new User("User name","password");
   }
 
