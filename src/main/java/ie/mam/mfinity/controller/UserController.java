@@ -36,10 +36,19 @@ public class UserController{
    
    @RequestMapping(value = "delete}", method = RequestMethod.POST)
    public ResponseEntity<?> delete(@RequestBody User user ) {
-	   		 
- 	        userRepository.delete(user); 	         
- 	       return new ResponseEntity<Void>(HttpStatus.OK);
+
+        userRepository.delete(user); 	         
+       return new ResponseEntity<Void>(HttpStatus.OK);
    } 
+   
+   
+	@RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
+	public @ResponseBody String delete(@PathVariable("id") String ids) {
+			Long id = Long.parseLong(ids);
+           userRepository.deleteById(id); 	         
+	       return "Ok";
+	}
+
    
      
   @RequestMapping(value = "update/{id}", method = RequestMethod.POST)
