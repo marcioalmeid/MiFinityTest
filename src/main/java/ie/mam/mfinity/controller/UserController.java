@@ -45,7 +45,14 @@ public class UserController{
         userRepository.save(user);
         return new User("User name","password");
   }
-
+  
+  @RequestMapping(value = "getUser/{id}", method = RequestMethod.GET)
+  public @ResponseBody User get(@PathVariable("id") String ids ) {
+	   Long id = Long.parseLong(ids);
+       User user = (User) userRepository.findById(id).get();
+        return user;
+  }
+  
   @GetMapping(path="/list")
   public @ResponseBody Iterable<User> getAllUsers(){
     return userRepository.findAll();
