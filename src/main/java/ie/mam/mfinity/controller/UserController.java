@@ -23,33 +23,22 @@ public class UserController{
   @Autowired
   private UserRepository userRepository;
 
-  @GetMapping(path="add")
-  public @ResponseBody String addNewUser(@RequestParam String userName, @RequestParam String password){
-  User user=new User( userName, password) ;
-    userRepository.save(user);
-   return "Saved";
-  }
 
- 
+
+  /*
+  * Add a new user to the database
+  */
     @RequestMapping(value="addUser", method = RequestMethod.POST)
     public  ResponseEntity<?>  addUser(@RequestBody User user) {
 	    userRepository.save(user);
-//	   return "User Saved";
         return new ResponseEntity<Void>(HttpStatus.CREATED);
-    }
-
-   @PostMapping(value="add")   
-    public User create(@RequestBody User user){
-        return userRepository.save(user);
-   }
-    
+    }    
    
-   @RequestMapping(value = "delete/{id}", method = RequestMethod.POST)
-   public @ResponseBody String delete(@PathVariable("id") String ids ) {
-	   		Long id = Long.parseLong(ids);
- 	        userRepository.deleteById(id);
- 	        
-         return "User was deleted successfuly!";
+   @RequestMapping(value = "delete}", method = RequestMethod.POST)
+   public ResponseEntity<?> delete(@RequestBody User user ) {
+	   		 
+ 	        userRepository.delete(user); 	         
+ 	       return new ResponseEntity<Void>(HttpStatus.OK);
    } 
    
      
