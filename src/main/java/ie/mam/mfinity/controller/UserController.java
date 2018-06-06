@@ -41,13 +41,26 @@ public class UserController{
        return new ResponseEntity<Void>(HttpStatus.OK);
    } 
    
+   @RequestMapping(value = "delete/{id}", method = RequestMethod.DELETE)
+   public ResponseEntity<Void> delete(@PathVariable("id") long id){
+        
+       //User user = userService.findById(id);
+
+       //if (user == null){
+       //    LOG.info("Unable to delete. User with id {} not found", id);
+        //   return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+       //}
+  
+       userRepository.deleteById(id);
+       return new ResponseEntity<Void>(HttpStatus.OK);
+   }
    
-	@RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
+	/*@RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
 	public @ResponseBody String delete(@PathVariable("id") String ids) {
 			Long id = Long.parseLong(ids);
            userRepository.deleteById(id); 	         
 	       return "Ok";
-	}
+	}*/
 
    
      
