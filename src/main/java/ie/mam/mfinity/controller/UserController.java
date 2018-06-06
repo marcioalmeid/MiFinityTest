@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 import ie.mam.mfinity.model.User;
 import ie.mam.mfinity.repository.UserRepository;
 
@@ -30,11 +32,10 @@ public class UserController{
 
  
     @RequestMapping(value="addUser", method = RequestMethod.POST)
-    public  @ResponseBody String addUser(@RequestBody User user) {
+    public  ResponseEntity<?>  addUser(@RequestBody User user) {
 	    userRepository.save(user);
-	   return "User Saved";
-
-//        return new ResponseEntity<Void>(HttpStatus.CREATED);
+//	   return "User Saved";
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 
    @PostMapping(value="add")   
