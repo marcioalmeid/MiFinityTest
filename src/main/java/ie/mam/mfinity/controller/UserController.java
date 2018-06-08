@@ -30,12 +30,19 @@ public class UserController{
   */
     @RequestMapping(value="addUser", method = RequestMethod.POST)
     public  ResponseEntity<?>  addUser(@RequestBody User user) {
-	    userRepository.save(user);
-        return new ResponseEntity<Void>(HttpStatus.CREATED);
+    	
+		if (userRepository.findByUserName(user.getUserName()).isEmpty()) {
+
+			userRepository.save(user);
+			return new ResponseEntity<Void>(HttpStatus.CREATED);
+		} else {
+		 
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("the user name already exists !");
+		}
     }    
 
    @RequestMapping(value = "delete/{id}", method = RequestMethod.DELETE)
-   public ResponseEntity<Void> delete(@PathVariable("id") long id){          
+   public ResponseEntity<Void> delete(@PathVariable("id") long id){  	  
        userRepository.deleteById(id);
        return new ResponseEntity<Void>(HttpStatus.OK);
    }
